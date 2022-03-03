@@ -11,7 +11,7 @@
 	<groupId>br.com</groupId>
 	<artifactId>booksystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>booksystem</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

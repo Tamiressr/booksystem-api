@@ -1,32 +1,42 @@
-version: '3'
+version: '3.4'
 services:
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  app:
+    image: tamiressiqueira/booksystem2
+    container_name: app
     ports:
-      - "8080:8080"
-    networks:
-      - booksystem-api
+      - 8080:80
     depends_on:
-      - postgres
-
-  postgres:
-    image: postgres:10.4
-    volumes:
-      - "pg-vol:/var/lib/postgres"
+      - db
+  db:
+    image: postgres
+    container_name: db
     environment:
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=12345
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=logique
+      - POSTGRES_DATABASE=booksystem
+
+
+services:
+  message-server:
+    container_name: message-server
+    build:
+      context: docker-message-server
+      dockerfile: Dockerfile
+    image: message-server:latest
+    ports:
+      - 18888:8888
     networks:
-      - booksystem-api
-    healthcheck:
-      test: [ "CMD", "pgadmin" ,"ping", "-h", "localhost" ]
-      timeout: 20s
-      retries: 10
+      - spring-cloud-network
+  product-server:
+    container_name: product-server
+    build:
+      context: docker-product-server
+      dockerfile: Dockerfile
+    image: product-server:latest
+    ports:
+      - 19999:9999
+    networks:
+      - spring-cloud-network
 networks:
-  booksystem-api:
+  spring-cloud-network:
     driver: bridge
-volumes:
-  pg-vol:
