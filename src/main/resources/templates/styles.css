@@ -1,0 +1,45 @@
+.containerFormBook {
+ display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+ height:100%;
+ width:100%;
+}
+
+.card{
+ height:200px;
+ width: 30rem;
+
+
+}
+
+.imageBook{
+width:800px;
+height:250px
+}
+.imgcapa{
+height:250px;
+width:200px;
+
+}
+.cardFormBook{
+ width: 50rem;
+ opacity: 01;
+ background-color:rgba(0, 0, 0,0);
+ border:none;
+}
+.titleFormBook{
+ padding: 15px ;
+ margin-bottom:10px;
+  background-color:rgba(32, 178, 170,1);
+}
+.btnSaveBook{
+
+flex-direction: row-reverse;
+display: flex;
+}
+.button-save{
+  background:rgba(32, 178, 170,1);
+  border-color: rgba(32, 178, 170,1);
+}

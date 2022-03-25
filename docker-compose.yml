@@ -34,6 +34,7 @@ services:
       dockerfile: Dockerfile
     image: product-server:latest
     ports:
+
       - 19999:9999
     networks:
       - spring-cloud-network

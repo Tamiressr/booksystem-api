@@ -21,6 +21,14 @@ public class Livro implements Serializable {
 	private String autor;
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
+	private String urlCapa;
+
+	public Livro(String nome, String autor, Genero genero,String urlCapa ){
+this.nome=nome;
+this.autor=autor;
+this.genero=genero;
+this.urlCapa=urlCapa;
+	}
 
 
 }

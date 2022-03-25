@@ -1,15 +1,17 @@
 package br.com.booksystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name="tb_trecho")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Trecho  implements Serializable {
 
