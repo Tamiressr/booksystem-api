@@ -1,43 +1,58 @@
-version: '3.4'
+version: '3.7'
+#para roder os services abaixo
+#docker-compose up -d
+
+#para terminar os services abaixo
+#docker-compose down
 services:
-  app:
-    image: tamiressiqueira/booksystem2
-    container_name: app
+  api:
+    build : .
     ports:
-      - 8080:80
-    depends_on:
-      - db
-  db:
-    image: postgres
-    container_name: db
+      - "8080:8080"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=logique
-      - POSTGRES_DATABASE=booksystem
-
-
-services:
-  message-server:
-    container_name: message-server
-    build:
-      context: docker-message-server
-      dockerfile: Dockerfile
-    image: message-server:latest
-    ports:
-      - 18888:8888
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/booksystem
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=logique
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - PostgreSQL
     networks:
-      - spring-cloud-network
-  product-server:
-    container_name: product-server
-    build:
-      context: docker-product-server
-      dockerfile: Dockerfile
-    image: product-server:latest
+      - backend
+  #spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+  PostgreSQL:
+    image: postgres
+    container_name: booksystem_postgres
+    restart: always
+    environment:
+      POSTGRES_DATABASE: booksystem
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: logique
+    volumes:
+      - C:/Users/t.tsr/Desktop/projetos/vol:/var/lib/postgresql/data
     ports:
-
-      - 19999:9999
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
-      - spring-cloud-network
+      - backend
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: booksystem_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "tamires@pgadmin.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - 16543:80
+    networks:
+      - backend
+    depends_on:
+      - PostgreSQL
 networks:
-  spring-cloud-network:
+  backend:
     driver: bridge
+    name: booksystem_network

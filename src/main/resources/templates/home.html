@@ -8,19 +8,23 @@
     <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
 <body>
-<div class="container"  th:each="livro: ${livros}">
+    <div class="container">
+        <div class="card"  th:each="livro: ${livros}">
 
-    <div class="card">
-        <div class="card-header">
-
-    <div th:text="${livro.nome}">
-    </div >
+        <div class="card-header" th:text="${livro.nome}">Nome do Livro</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-sm-8 mb-3" >
+                   <div >Autor <input class="form-control" th:value="${livro.autor}"/></div>
+                    <div> Genero <input class="form-control" th:value="${livro.genero}"/></div>
+                </div>
+                <div class="col-12 col-sm-4 ">
+                    <div> <img class="img-thumbnail img-200-200" th:src="${livro.urlCapa}" src=""/></div>
+                </div>
+            </div>
         </div>
-    <div th:text="${livro.genero}">Página:
+        </div>
     </div>
-    <div class="imgcapa"> <img  th:src="${livro.urlCapa}"/> </div>
-</div>
-
-</div>
 </body>
+
 </html>
