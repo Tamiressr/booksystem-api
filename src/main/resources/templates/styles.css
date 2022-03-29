@@ -6,9 +6,9 @@
  height:100%;
  width:100%;
 }
-img-thumbnail img-200-200 {
+.img-200-200 {
    width: 200px;
-    height:200px;// a altura se adequa proporcionalmente
+    height:400px;// a altura se adequa proporcionalmente
 }
 
 .imageBook{
@@ -31,12 +31,8 @@ width:200px;
  margin-bottom:10px;
   background-color:rgba(32, 178, 170,1);
 }
-.btnSaveBook{
-
+btn .btnSaveBook{
 flex-direction: row-reverse;
+background-color:red;
 display: flex;
-}
-.button-save{
-  background:rgba(32, 178, 170,1);
-  border-color: rgba(32, 178, 170,1);
 }

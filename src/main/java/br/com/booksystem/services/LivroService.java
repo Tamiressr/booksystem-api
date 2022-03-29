@@ -1,5 +1,6 @@
 package br.com.booksystem.services;
 
+import br.com.booksystem.model.Genero;
 import br.com.booksystem.model.Livro;
 import br.com.booksystem.model.Trecho;
 import br.com.booksystem.repositories.LivroRepository;
@@ -7,6 +8,7 @@ import br.com.booksystem.repositories.TrechoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,5 +28,9 @@ public class LivroService {
 		}
 
 		return repository.save(livro);
+	}
+
+	public List<Genero> getGeneros() {
+		return new ArrayList<>();
 	}
 }

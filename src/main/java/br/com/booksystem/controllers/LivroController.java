@@ -22,11 +22,14 @@ public class LivroController {
 		List<Livro>livros=service.findAll();
 		return ResponseEntity.ok().body(livros);
 	}
+
 @PostMapping
+
 	public ResponseEntity<Livro> save(@Valid @RequestBody Livro livro){
 
 	 Livro l=service.save(livro);
 
 	 return ResponseEntity.ok(l);
 }
+
 }
