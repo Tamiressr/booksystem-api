@@ -6,19 +6,9 @@
  height:100%;
  width:100%;
 }
-.img-200-200 {
-   width: 200px;
-    height:400px;// a altura se adequa proporcionalmente
-}
-
-.imageBook{
-width:800px;
-height:250px
-}
-.imgcapa{
-height:250px;
-width:200px;
-
+.img-200-200  {
+   width: 150px;
+    height:200px;// a altura se adequa proporcionalmente
 }
 .cardFormBook{
  width: 50rem;

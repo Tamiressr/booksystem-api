@@ -1,18 +1,19 @@
 package br.com.booksystem.model;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
-public enum Genero {
-	ROMANCE("Romance"),
-	FANTASIA("Fantasia"),
-	FICCAO("Ficção"),
-	SCI_FI("Sci-Fi"),
-	TERROR("Terror"),
-	AUTOAJUDA("Autoajuda");
+import javax.persistence.*;
 
-	private String valor;
-	Genero(String valor){
-		this.valor=valor;
+@Entity
+@Table(name="tb_genero")
+@Data
+public class Genero {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String nome;
+
+	public String toString(){
+		return this.nome;
 	}
 }
