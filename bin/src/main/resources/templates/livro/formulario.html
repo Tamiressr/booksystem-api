@@ -9,32 +9,36 @@
 
 <body>
 <div class="container">
-    <div class="jumbotron  mb-3 mt-3" style="background-color:green;">
+    <div class="jumbotron  mb-3 " style="background-color:green;">
         <h1 class="display-4" >Cadastrar Livro</h1>
     </div>
-    <form action="./novo" method="POST">
-        <div>
+<div class="card mt-3">
+    <form  th:object="${livroDTO}"class="card-body" action="livro/novo" method="POST">
+        <div class="form-group">
+        <div class="form-control">
             <label id="nome" ></label>
-            <input name="nome" placeholder="nome do livro">
+            <input  th:field="*{nome}" placeholder="nome do livro">
             <small>Informe o nome do livro</small>
 
         </div>
-        <div>
+        <div class="form-control" >
             <label id="autor" ></label>
-            <input name="autor" placeholder="autor do livro">
+            <input  th:field="*{autor}"  placeholder="autor do livro">
             <small>Informe o autor do livro</small>
 
         </div>
-        <div>
+        <div  class="form-control">
             <label id="urlCapa" ></label>
-            <input name="urlCapa" placeholder="capa do livro">
+            <input th:field="*{urlCapa}" placeholder="capa do livro">
             <small>Copie a url de uma imagem da capa do livro e cole aqui</small>
 
         </div>
         <div>
-            <button type="submit">cadastrar</button>
+            <button class="btn btn-success" type="submit">cadastrar</button>
         </div>
+            </div>
     </form>
+</div>
 </div>
 
 </body>

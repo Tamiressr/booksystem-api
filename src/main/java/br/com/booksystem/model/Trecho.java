@@ -23,4 +23,31 @@ public class Trecho  implements Serializable {
 	@ManyToOne(cascade =  CascadeType.ALL)
 	@JsonIgnore
 	private Livro livro;
+
+public Long getId() {
+	return id;
+}
+public void setId(Long id) {
+	this.id = id;
+}
+public String getDescricao() {
+	return descricao;
+}
+public void setDescricao(String descricao) {
+	this.descricao = descricao;
+}
+public String getPagina() {
+	return pagina;
+}
+public void setPagina(String pagina) {
+	this.pagina = pagina;
+}
+public Livro getLivro() {
+	return livro;
+}
+public void setLivro(Livro livro) {
+	this.livro = livro;
+}
+
+
 }

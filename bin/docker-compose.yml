@@ -1,0 +1,57 @@
+version: '3.7'
+#para roder os services abaixo
+#docker-compose up -d
+
+#para terminar os services abaixo
+#docker-compose down
+services:
+  api:
+    build : .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/booksystem
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=logique
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - PostgreSQL
+    networks:
+      - backend
+  PostgreSQL:
+    image: postgres
+    container_name: booksystem_postgres
+    restart: always
+    environment:
+      POSTGRES_DATABASE: booksystem
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: logique
+    volumes:
+      - C:/Users/t.tsr/Desktop/projetos/vol:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: booksystem_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "tamires@pgadmin.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - 16543:80
+    networks:
+      - backend
+    depends_on:
+      - PostgreSQL
+networks:
+  backend:
+    driver: bridge
+    name: booksystem_network

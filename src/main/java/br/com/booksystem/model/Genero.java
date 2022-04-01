@@ -1,13 +1,16 @@
 package br.com.booksystem.model;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="tb_genero")
 @Data
-public class Genero {
+@RequiredArgsConstructor
+public class Genero implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -16,4 +19,5 @@ public class Genero {
 	public String toString(){
 		return this.nome;
 	}
+
 }

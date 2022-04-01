@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name = "tb_livro")
 @Data
 @RequiredArgsConstructor
-public class Livro implements Serializable {
+public class Livro implements Serializable  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
 	private String nome;
@@ -22,6 +22,7 @@ public class Livro implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Genero> generos = new ArrayList<>();
 	private String urlCapa;
+
 
 	public Livro(String nome, String autor, String urlCapa) {
 		this.nome = nome;

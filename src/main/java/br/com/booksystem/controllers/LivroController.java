@@ -6,15 +6,17 @@ import br.com.booksystem.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping(value="livro")
+@RequestMapping("livro")
 public class LivroController {
 
 	@Autowired
@@ -28,15 +30,6 @@ public class LivroController {
 		return ResponseEntity.ok().body(livros);
 	}
 
-
-	/*	@GetMapping("/home")
-		public String home(Model model){
-
-			List<Livro> livros=livroService.findAll();
-
-			model.addAttribute("livros",livros);
-			return"home";
-		}*/
 	@GetMapping("home")
 	public ModelAndView home() {
 		List<Livro> livros = service.findAll();
@@ -44,10 +37,15 @@ public class LivroController {
 		mv.addObject("livros", livros);
 		return mv;
 	}
-	@GetMapping("cadastro")
+
+	@GetMapping("xpto")
+	public String xpto() {
+		return "book/xpto";
+	}
+	@GetMapping("formulario")
 	public String formulario() {
 
-		return "formulario";
+		return "livro/formulario";
 	}
 	public ModelAndView livrosPorGenero(Long id){
 		List<Livro> livros= service.getLivrosGenero(id);
@@ -56,10 +54,12 @@ public class LivroController {
 		return mv;
 	}
 	@PostMapping("novo")
-	public ResponseEntity<Livro> save(LivroDTO dto){
-
+	public String save(@Valid LivroDTO dto, BindingResult result){
+		if(result.hasErrors()){
+			return "livro/formulario";
+		}
 		Livro l=service.save(dto.toLivro());
-		return ResponseEntity.ok(l);
+		 return "livro/formulario";
 	}
 
 }
