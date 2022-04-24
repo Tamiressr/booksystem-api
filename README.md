@@ -6,13 +6,16 @@
 trechos de livros, mas que nem sempre 
 lembram onde estão</p>
 
-##:rocket: Tecnologias
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+## Tecnologias
+>Esse projeto foi desenvolvido com as seguintes tecnologias
 
-✔️ Docker
-✔️ Spring Boot
-✔️ Java 8
-✔️ Swagger
+>>✔️ Docker
+> 
+>>✔️ Spring Boot
+> 
+>>✔️ Java 8
+> 
+>>✔️ Swagger
 
 
 
@@ -24,7 +27,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
  
 2- Para visualizar a documentação:
 > a) execute a aplicação e em seguida no seu browser acesse:
->>http://localhost:8080/springfox/swagger-ui/index.html 
+>>http://localhost:8080/booksystem/swagger-ui/index.html 
 >
 > 
 README em Construção
