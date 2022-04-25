@@ -4,7 +4,7 @@
 ## 💻 Projeto
 <p> Para os leitores que  adoram destacar 
 trechos de livros, mas que nem sempre 
-lembram onde estão</p>
+têm eles na mão</p>
 
 ## Tecnologias
 >Esse projeto foi desenvolvido com as seguintes tecnologias
@@ -16,6 +16,10 @@ lembram onde estão</p>
 >>✔️ Java 8
 > 
 >>✔️ Swagger
+>
+>>✔️Lombok
+> 
+>>✔️Hibernate 
 
 
 

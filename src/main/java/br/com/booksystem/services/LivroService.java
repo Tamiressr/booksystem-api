@@ -31,7 +31,13 @@ public class LivroService {
 		}
 		for(Genero genero:livro.getGeneros()){
 			System.out.println(genero);
-			generoRepository.save(genero);
+			//comparar se já existe genero e não salvar se existir
+if (generoRepository.findByNome(genero.getNome()).isPresent()){
+	System.out.println("repetindo genero ");
+}else{
+	generoRepository.save(genero);
+}
+
 		}
 
 		return repository.save(livro);
